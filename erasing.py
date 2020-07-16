@@ -1,5 +1,4 @@
 import tensorflow as tf
-import math
 
 def random_erasing(img, probability = 0.5, sl = 0.02, sh = 0.4, r1 = 0.3, method = 'random'):
     #Motivated by https://github.com/Amitayus/Random-Erasing-TensorFlow.git
