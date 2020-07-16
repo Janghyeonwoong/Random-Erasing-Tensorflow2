@@ -34,7 +34,7 @@ def dataset_map_function(path):
     
     img = erasing.random_erasing(img, method=args.method)
     return img
-
+    
 def visualize(img1, img2, num):
     fig = plt.figure()
     plt.subplot(1,2,1)
