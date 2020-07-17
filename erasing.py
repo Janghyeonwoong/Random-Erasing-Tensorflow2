@@ -39,9 +39,9 @@ def random_erasing(img, probability = 0.5, sl = 0.02, sh = 0.4, r1 = 0.3, method
         else:
             break
 
-    x1 = tf.random.uniform([], minval=0, maxval=img_height - h, dtype=tf.int32)
-    y1 = tf.random.uniform([], minval=0, maxval=img_width - w, dtype=tf.int32)
-
+    x1 = tf.cond(img_height == h, lambda:0, lambda:tf.random.uniform([], minval=0, maxval=img_height - h, dtype=tf.int32))
+    y1 = tf.cond(img_width  == w, lambda:0, lambda:tf.random.uniform([], minval=0, maxval=img_width - w, dtype=tf.int32))
+    
     part1 = tf.slice(img, [0,0,0], [x1,img_width,img_channels]) # first row
     part2 = tf.slice(img, [x1,0,0], [h,y1,img_channels]) # second row 1
 
