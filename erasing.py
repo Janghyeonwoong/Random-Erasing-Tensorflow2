@@ -31,7 +31,7 @@ def random_erasing(img, probability = 0.5, sl = 0.02, sh = 0.4, r1 = 0.3, method
     w = tf.cast(tf.math.round(tf.math.sqrt(target_area / aspect_ratio)), tf.int32)
 
     while tf.constant(True, dtype=tf.bool):
-        if h > img_height or w > img_height:
+        if h > img_height or w > img_width:
             target_area = tf.random.uniform([],minval=sl, maxval=sh) * area
             aspect_ratio = tf.random.uniform([],minval=r1, maxval=1/r1)
             h = tf.cast(tf.math.round(tf.math.sqrt(target_area * aspect_ratio)), tf.int32)
